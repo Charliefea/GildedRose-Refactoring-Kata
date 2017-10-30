@@ -1,6 +1,6 @@
 package com.gildedrose
 
-class BaseItem(val item: Item) {
+class BaseItemBehaviour(val item: Item) {
   def update: Unit = {
   }
 }

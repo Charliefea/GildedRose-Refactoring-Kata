@@ -108,7 +108,7 @@ class GildedRoseTest  extends FlatSpec with Matchers {
         (app.items(0).quality) should equal (0)
       }
 
-      it should "never decreases in quality or changes sell by date of Sulfuras, Hand of Ragnaros" in {
+      it should "never decrease in quality or changes sell by date of Sulfuras, Hand of Ragnaros" in {
         val items = Array[Item](new Item("Sulfuras, Hand of Ragnaros", 1, 80))
         val app = new GildedRose(items)
         app.updateQuality()
@@ -132,5 +132,13 @@ class GildedRoseTest  extends FlatSpec with Matchers {
         (app.items(0).name) should equal ("Conjured")
         (app.items(0).sellIn) should equal (-1)
         (app.items(0).quality) should equal (6)
+      }
+      it should "never reduce quaility to below 0 for conjured items " in {
+        val items = Array[Item](new Item("Conjured", 0, 0))
+        val app = new GildedRose(items)
+        app.updateQuality()
+        (app.items(0).name) should equal ("Conjured")
+        (app.items(0).sellIn) should equal (-1)
+        (app.items(0).quality) should equal (0)
       }
 }

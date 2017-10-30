@@ -1,6 +1,6 @@
 package com.gildedrose
 
-class AgedBrie(val it: Item) extends BaseItem(it) {
+class AgedBrie(val it: Item) extends BaseItemBehaviour(it) {
   override def update: Unit = {
     it.sellIn -= 1
     it.quality += 1
